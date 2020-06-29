@@ -46,6 +46,11 @@ $ kubectl create -f testsa-role.yaml
 ```sh
 $ kubectl create -f testsa-rolebinding.yaml
 ```
+
+#### volume mount
+create `/home/flag/flag.txt` file (used as hostPath volume mount). It is written with boolean value by node-app-containers.
+Since request to stop load may not be directed to the same pod that served to start load as there are multiple replicas of the same pod, value is read from fla.txt and runs/breaks loop to generate/stop load.
+
 #### Backend
 4. create loadnode-deployment and service (server subjected to load)
 ```sh
