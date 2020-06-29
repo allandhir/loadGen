@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service1-deployment
+  labels:
+    app: service1
+#  annotations:
+#    sidecar.istio.io/inject: "true"
+#    app: service1
+spec:
+  selector:
+    matchLabels:
+      app: service1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: service1
+    spec:
+      containers:
+      - name: service1-container
+        image: frontend-service1:vt1.1
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 400m
+          requests:
+            cpu: 100m

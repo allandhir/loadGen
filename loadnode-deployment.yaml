@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loadnode-app-deployment
+  labels:
+    app: loadnode-app
+#  annotations:
+#    sidecar.istio.io/inject: "true"
+spec:
+  selector:
+    matchLabels:
+      app: loadnode-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: loadnode-app
+    spec:
+      volumes:
+        - name: genload-flag
+          hostPath:
+            path: /home/flag
+            type: Directory
+      containers:
+      - name: loadnode-app-container
+        image: load-backend:vt1
+        ports:
+        - containerPort: 5001
+        resources:
+          limits:
+            cpu: 40m
+          requests:
+            cpu: 10m
+        volumeMounts:
+          - name: genload-flag
+            mountPath: /home/
+
+
+

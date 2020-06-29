@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: loadnode-app-service
+  labels:
+    app: loadnode-app
+spec:
+  ports:
+    - port: 5001
+      targetPort: 5001
+      name: http-query
+  type: ClusterIP
+  selector:
+    app: loadnode-app
+      
+
+
+
+

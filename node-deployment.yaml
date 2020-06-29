@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-deployment
+  labels:
+    app: node-app
+#  annotations:
+#    sidecar.istio.io/inject: "true"
+spec:
+  selector:
+    matchLabels:
+      app: node-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      serviceAccountName: testsa
+      volumes:
+        - name: genload-flag
+          hostPath:
+            path: /home/flag
+            type: Directory
+      containers:
+      - name: node-app-container
+        image: genload-backend:vt1
+        ports:
+        - containerPort: 5002
+#        resources:
+#          limits:
+#            cpu: 40m
+#          requests:
+#            cpu: 10m
+        volumeMounts:
+          - name: genload-flag
+            mountPath: /home/
+
+
+
