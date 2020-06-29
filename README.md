@@ -1,5 +1,6 @@
 # loadGen
 React app to view metrics and to start/stop load testing (displays only readyReplicas for now. Similarly other metrics like cpu, memory utilization and more can be added)
+
 **3 deployments**
 - React app served on nginx
 - node server to generate load
