@@ -29,7 +29,7 @@ $ docker build -t <name>:<tag> ./frontend/
 $ docker build -t <name>:<tag> ./backend/loadgen/
 $ docker build -t <name>:<tag> ./backend/loadnode/
 ```
-**change image <name>:<tag> in \*.deployment.yaml files accordingly**
+**change image name and tag in \*.deployment.yaml files accordingly**
 
 # kubectl away
 #### ServiceAccount, Role and RoleBinding
