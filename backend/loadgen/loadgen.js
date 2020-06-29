@@ -33,10 +33,9 @@ app.get('/genLoad', (req,res)=>{
     //gen();
     exec('echo "true" > /home/flag.txt && while `cat /home/flag.txt`; do wget -q -O- http://loadnode-app-service:5001/load; done; echo "ok";', (err, stdout, stderr) => {
         if (err) {
-          //some err occurred
+
           console.error(err)
         } else {
-         // the *entire* stdout and stderr (buffered)
          console.log(`stdout: ${stdout}`);
          console.log(`stderr: ${stderr}`);
         }
@@ -53,10 +52,10 @@ app.get('/readyReplicas', urlEncodedParser, (req,res)=>{
     //run terminal command to get readyReplicas.
     exec('KUBE_TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token) && curl -sSk -H "Authorization: Bearer $KUBE_TOKEN" https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_PORT_443_TCP_PORT/apis/apps/v1/namespaces/default/deployments/loadnode-app-deployment | jq \'.status.readyReplicas\'', (err, stdout, stderr) => {
         if (err) {
-          //some err occurred
+
           console.error(err)
         } else {
-         // the *entire* stdout and stderr (buffered)
+
          console.log(`stdout: ${stdout}`);
          res.json(stdout);
          console.log(`stderr: ${stderr}`);

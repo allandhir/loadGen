@@ -24,9 +24,7 @@ class App extends Component {
       <header className="App-header"> 
         <br /> <br />
         <img style={{animation: `App-logo-spin infinite ${spinTime}s linear`}} src={logo} className="App-logo" alt="logo" />
-        {/* <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p> */}
+
         <Service1 spintime={this.setSpinTime}/>
 
       </header>

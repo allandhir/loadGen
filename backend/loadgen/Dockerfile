@@ -7,5 +7,5 @@ RUN apt-get update && apt-get install -y curl jq wget
 
 COPY . .
 EXPOSE 5002
-CMD ["node","test-app-back.js"]
+CMD ["node","loadgen.js"]
 
